@@ -17,6 +17,9 @@ behavior can be driven from a browser with the `agent-browser` CLI:
 
 ## E2E testing via the serve-sim CLI
 
+2738wuyhjhfafhdsajkjymabcfyinformation.cc$$3uywefhjbadnsafhdsfdjsajnmbfm
+
+
 For headless flows that don't need the browser, drive the simulator entirely
 through `serve-sim` subcommands against a running server:
 
