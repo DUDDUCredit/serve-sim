@@ -146,6 +146,10 @@ jobs:
               echo "Push rejected (attempt $i/3), rebasing on origin/main..."
               git pull --rebase --autostash origin main || break
             done
-            echo "::error::Failed to push serve-sim version bump after 3 attempts. npm has been advanced; next run will self-heal."
-            exit 1
+            # main is a protected branch, so github-actions[bot] can't push the
+            # bump commit directly. That's fine: npm has already been advanced and
+            # the next run recomputes the version from npm's latest tag, so it never
+            # collides. The repo's package.json just stays behind npm. Warn instead
+            # of failing so the publish job reflects the (successful) npm publish.
+            echo "::warning::Could not push serve-sim version bump to protected main; npm already advanced and the next run recomputes from npm. Leaving package.json behind."
           fi
